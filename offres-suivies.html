@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offres suivies - JobBoard MERN</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">JobBoard <span>MERN</span></a>
+            <nav>
+                <a href="index.html" class="nav-link">Offres</a>
+                <a href="offres-suivies.html" class="nav-link active">Offres suivies</a>
+                <a href="deposer-offre.html" class="btn btn-primary">+ Déposer</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-md page-main">
+        <div class="page-header-flex">
+            <h2>Mes Offres Enregistrées</h2>
+            <small> offre sauvegardée</small>
+        </div>
+
+        <section class="job-container">
+            <article class="job-card">
+                <div class="card-header">
+                    <div>
+                        <span class="badge badge-stage">Stage</span>
+                        <h2>Développeur Fullstack React / Node.js</h2>
+                        <p class="company">TechCorp • Casablanca</p>
+                    </div>
+                    <button class="btn btn-danger">Supprimer</button>
+                </div>
+                <div class="tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                </div>
+                <div class="card-footer">
+                    <small>Enregistré il y a 2h</small>
+                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+</body>
+</html>

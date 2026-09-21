@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobBoard MERN - Portail Offres</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">JobBoard <span>MERN</span></a>
+            <nav>
+                <a href="index.html" class="nav-link active">Offres</a>
+                <a href="offres-suivies.html" class="nav-link">Offres suivies</a>
+                <a href="deposer-offre.html" class="btn btn-primary">+ Déposer</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BANNIERE DE RECHERCHE -->
+    <section class="hero-banner">
+        <div class="container text-center">
+            <h1>Trouvez votre Stage ou Alternance</h1>
+            <p>Spécialement conçu pour les apprenants en Développement Web</p>
+
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher une techno, un titre...">
+                <select>
+                    <option value="">Toutes les villes</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Rabat">Rabat</option>
+                </select>
+                <button class="btn btn-primary">Chercher</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container page-grid">
+        
+        <!-- FILTRES -->
+        <aside class="filter-card">
+            <h3>Filtres</h3>
+            <div class="filter-section">
+                <label><b>Type de contrat</b></label>
+                <label><input type="checkbox"> Stage</label>
+                <label><input type="checkbox"> Alternance</label>
+            </div>
+            <div class="filter-section">
+                <label><b>Technologies</b></label>
+                <label><input type="checkbox"> React</label>
+                <label><input type="checkbox"> Node.js</label>
+                <label><input type="checkbox"> Express</label>
+            </div>
+        </aside>
+
+        <!-- CARDS DES OFFRES -->
+        <section class="job-container">
+            
+            <article class="job-card">
+                <div class="card-header">
+                    <div>
+                        <span class="badge badge-stage">Stage</span>
+                        <h2>Développeur Fullstack React / Node.js</h2>
+                        <p class="company">TechCorp • Casablanca</p>
+                    </div>
+                </div>
+                <div class="tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                </div>
+                <div class="card-footer">
+                    <small>Aujourd'hui</small>
+                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
+                </div>
+            </article>
+
+            <article class="job-card">
+                <div class="card-header">
+                    <div>
+                        <span class="badge badge-alternance">Alternance</span>
+                        <h2>Développeur Backend Node.js / Express</h2>
+                        <p class="company">WebDev Agency • Rabat</p>
+                    </div>
+                </div>
+                <div class="tags">
+                    <span class="tag">Express</span>
+                    <span class="tag">MySQL</span>
+                </div>
+                <div class="card-footer">
+                    <small>Il y a 2 jours</small>
+                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+</body>
+</html>

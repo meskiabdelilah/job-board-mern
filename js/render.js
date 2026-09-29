@@ -56,3 +56,18 @@ export function renderLoading (container){
         </div>
     `;
 }
+
+/**
+ * affichage de l'error message
+ * @param {HTMLElement} container 
+ * @param {string} message
+ */
+export function renderError(container, message)
+{
+    container.textContent = '' ;
+    const divError = document.createElement('div');
+        divError.classList.add('error-message');    
+        divError.textContent = message ;
+
+    container.appendChild(divError);
+}

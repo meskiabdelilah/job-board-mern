@@ -1,5 +1,5 @@
 import { fetchOffres } from "./data.js";
-import { renderCards, renderLoading } from "./render.js";
+import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
  const container = document.getElementById("offres-container")
@@ -8,6 +8,7 @@ async function init () {
  const {data:allOffres, error} = await fetchOffres();
 
  if (error) {
+    renderError(container,error)
     console.log("Error Detecte", error);
 
 } else {

@@ -58,47 +58,11 @@
         </aside>
 
         <!-- CARDS DES OFFRES -->
-        <section class="job-container">
-            
-            <article class="job-card">
-                <div class="card-header">
-                    <div>
-                        <span class="badge badge-stage">Stage</span>
-                        <h2>Développeur Fullstack React / Node.js</h2>
-                        <p class="company">TechCorp • Casablanca</p>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                </div>
-                <div class="card-footer">
-                    <small>Aujourd'hui</small>
-                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
-                </div>
-            </article>
-
-            <article class="job-card">
-                <div class="card-header">
-                    <div>
-                        <span class="badge badge-alternance">Alternance</span>
-                        <h2>Développeur Backend Node.js / Express</h2>
-                        <p class="company">WebDev Agency • Rabat</p>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">Express</span>
-                    <span class="tag">MySQL</span>
-                </div>
-                <div class="card-footer">
-                    <small>Il y a 2 jours</small>
-                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
-                </div>
-            </article>
-
-        </section>
+        <section class="job-container" id="offres-container"></section>
     </main>
 
+    <script type="module" src="js/data.js"></script>
+    <script type="module" src="js/render.js" ></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

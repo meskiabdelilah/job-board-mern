@@ -43,3 +43,16 @@ export function renderCards (offres, container) {
 
     container.innerHTML = cardsHTML ;
 }
+
+/**
+ * affichage de l'etat de chargement 
+ * @param {HTMLElement} container 
+ */
+
+export function renderLoading (container){
+    container.innerHTML = `
+        <div> 
+            <p> Chargement des offres en cours... </p>
+        </div>
+    `;
+}

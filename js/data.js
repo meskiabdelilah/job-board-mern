@@ -9,7 +9,7 @@ export async function fetchOffres() {
             // Si le serveur renvoie une erreur HTTP, on déclenche une exception
             throw new Error(`Error HTTP: ${reponse.status}`);
         }
-        console.log(reponse);
+        // console.log(reponse);
         
         // Conversion de la réponse brute en tableau/objet JavaScript
         const offres = await reponse.json();

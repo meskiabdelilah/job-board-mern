@@ -1,4 +1,5 @@
 import { fetchOffres } from "./data.js";
+import { filterByContract } from "./filters.js";
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
@@ -19,15 +20,15 @@ async function init () {
 
     contractFilters.forEach(filter => {
         filter.addEventListener("change", () => {
+            // Récupérer uniquement les contrats cochés
             const checkedBoxes = document.querySelectorAll(".filter-contract:checked");
+            
+            // Transformer la NodeList en tableau de valeurs : ["Stage", "Alternance"]
             const selectedContracts = Array.from(checkedBoxes).map(box => box.value);
-
-            if (selectedContracts.length === 0) {
-                renderCards(allOffres,container)
-            } else {
-              const filteredOffres = allOffres.filter(offre => selectedContracts.includes(offre.typeContrat));
+            
+            // Filtrer les offres selon les contrats sélectionnés
+            const filteredOffres = filterByContract(allOffres,selectedContracts);
                 renderCards(filteredOffres, container);
-            }
             
         });
     });

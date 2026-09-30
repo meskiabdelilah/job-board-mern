@@ -12,3 +12,17 @@ export function filterByContract(offres, selectedContracts) {
      return offres.filter(offre =>selectedContracts.includes(offre.typeContrat));
         
 }
+
+/**
+ * Filter les offres selon les villes 
+ * @param {Array} offres 
+ * @param {string} selectedCity 
+ * @returns {Array}
+ */
+export function filterByCity(offres, selectedCity) {
+   if (selectedCity === "") {
+      return offres;
+   }
+   
+   return offres.filter(offre => offre.ville === selectedCity)
+}

@@ -9,7 +9,7 @@ async function init () {
 
  if (error) {
     renderError(container,error)
-    console.log("Error Detecte", error);
+    console.log("Error Detecte", error);    
 
 } else {
     renderCards(allOffres,container);

@@ -71,3 +71,102 @@ export function renderError(container, message)
 
     container.appendChild(divError);
 }
+
+/**
+ * Afficher les détails d'une offre
+ * @param {Object} offre
+ * @param {HTMLElement} container
+ */
+export function renderDetailsCard(offre, container) {
+    const badgeClass = offre.typeContrat.toLowerCase().includes("stage")? "badge-stage": "badge-alternance";
+
+    container.innerHTML = `
+        <article class="job-card job-card-lg">
+
+            <div class="card-header">
+                <div>
+                    <span class="badge ${badgeClass}">
+                        ${offre.typeContrat}
+                    </span>
+
+                    <h1 class="card-header-title">
+                        ${offre.titre}
+                    </h1>
+
+                    <p class="company company-lg">
+                        ${offre.entreprise} • ${offre.ville}
+                    </p>
+                </div>
+
+                <div>
+                    <button class="btn btn-outline">
+                        Sauvegarder
+                    </button>
+                </div>
+            </div>
+
+
+            <hr class="divider">
+
+
+            <div class="job-details-content">
+
+                <h3>Description du poste</h3>
+                <p>
+                    ${offre.descriptionLongue}
+                </p>
+
+                <h3>Profil recherché</h3>
+                <p>
+                    ${offre.profilRecherche}
+                </p>
+
+                <h3>Technologies requises</h3>
+
+                <div class="tags">
+                    ${offre.technologies
+                        .map(tech => `
+                            <span class="tag">${tech}</span>
+                        `)
+                        .join("")}
+                </div>
+
+            </div>
+
+
+            <hr class="divider">
+
+
+            <div class="card-footer card-footer-clean">
+
+                <small>
+                    Publié le ${offre.datePublication}
+                </small>
+
+                ${
+                    offre.emailContact
+                        ? `
+                            <a
+                                href="mailto:${offre.emailContact}"
+                                class="btn btn-primary btn-lg"
+                            >
+                                Postuler par Email
+                            </a>
+                        `
+                        : `
+                            <a
+                                href="${offre.lienCandidature}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn btn-primary btn-lg"
+                            >
+                                Postuler
+                            </a>
+                        `
+                }
+
+            </div>
+
+        </article>
+    `;
+}

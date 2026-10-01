@@ -1,5 +1,6 @@
 import { fetchOffres } from "./data.js";
 import { renderError, renderDetailsCard ,renderLoading } from "./render.js";
+import { addFollowedOffer } from "./storage.js";
 
 async function initDetails () {
     const params = new URLSearchParams(window.location.search);
@@ -24,8 +25,16 @@ async function initDetails () {
     return;
 
     }
-    renderDetailsCard(offre, container);
 
+    renderDetailsCard(offre, container)
+    
+    const followButton = document.getElementById("follow-offer-btn");
+
+    followButton.addEventListener("click", () => {
+        addFollowedOffer(offre.id);
+    
+    });
+    
 }
 
 initDetails();

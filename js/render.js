@@ -99,7 +99,7 @@ export function renderDetailsCard(offre, container) {
                 </div>
 
                 <div>
-                    <button class="btn btn-outline">
+                    <button  id="follow-offer-btn" class="btn btn-outline">
                         Sauvegarder
                     </button>
                 </div>

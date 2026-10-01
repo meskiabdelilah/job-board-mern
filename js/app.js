@@ -1,18 +1,20 @@
 import { fetchOffres } from "./data.js";
-import { filterByContract , filterByCity, filterByTechnology} from "./filters.js";
+import { filterByContract , filterByCity, filterByTechnology, filterBySearch} from "./filters.js";
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
  const filtersState = {
     contracts: [],
     city: "",
-    technologies: []
+    technologies: [],
+    search: ""
  };
  
  const container = document.getElementById("offres-container");
  const contractFilters  = document.querySelectorAll(".filter-contract");
  const cityFilters = document.getElementById("city-filter");
- const technologieFilters = document.querySelectorAll(".filter-technology")
+ const technologieFilters = document.querySelectorAll(".filter-technology");
+ const searchInput  = document.getElementById("search-input");
 
 
  renderLoading(container);
@@ -61,6 +63,13 @@ async function init () {
         });
     });
 
+    // filter par search
+    searchInput.addEventListener("input", () =>{
+        const searchText = searchInput.value ;
+        filtersState.search = searchText;
+        applyFilters();        
+    })
+
  }
 
 function applyFilters() {
@@ -71,6 +80,8 @@ function applyFilters() {
     result = filterByCity(result, filtersState.city);
 
     result = filterByTechnology(result, filtersState.technologies);
+
+    result = filterBySearch(result, filtersState.search);
 
     renderCards(result, container);
 }

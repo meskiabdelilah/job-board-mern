@@ -41,3 +41,21 @@ export function filterByTechnology (offres, selectedTechnologies) {
    return offres.filter(offre => selectedTechnologies.some(tech => offre.technologies.includes(tech)));
 
 }
+
+/**
+ * filter les offres selon les search 
+ * @param {Array} offres 
+ * @param {string} searchText 
+ * @returns {Array}
+ */
+export function filterBySearch(offres, searchText) {
+   const query = searchText.toLowerCase().trim();
+   if (query === "") {
+      return offres ;
+   }
+
+   return offres.filter(offre => offre.titre.toLowerCase().includes(query)|| 
+                        offre.entreprise.toLowerCase().includes(query) || 
+                        offre.descriptionCourte.toLowerCase().includes(query)
+                        );
+}

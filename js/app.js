@@ -3,6 +3,12 @@ import { filterByContract , filterByCity, filterByTechnology} from "./filters.js
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
+ const filtersState = {
+    contracts: [],
+    city: "",
+    technologies: []
+ };
+ 
  const container = document.getElementById("offres-container");
  const contractFilters  = document.querySelectorAll(".filter-contract");
  const cityFilters = document.getElementById("city-filter");
@@ -28,19 +34,18 @@ async function init () {
             
             // Transformer la NodeList en tableau de valeurs : ["Stage", "Alternance"]
             const selectedContracts = Array.from(checkedBoxes).map(box => box.value);
-            
-            // Filtrer les offres selon les contrats sélectionnés
-            const filteredOffres = filterByContract(allOffres,selectedContracts);
-                renderCards(filteredOffres, container);
-            
+                filtersState.contracts = selectedContracts;   
+                applyFilters();
+      
         });
     });
 
     // filter par ville
     cityFilters.addEventListener("change", () => {
         const selectedCity = cityFilters.value
-        const filteredOffres = filterByCity(allOffres, selectedCity);
-            renderCards(filteredOffres, container);
+            filtersState.city = selectedCity;  
+            applyFilters();
+
         
     });
 
@@ -50,14 +55,25 @@ async function init () {
             // Récupérer uniquement les technologie cochés
             const checkedBoxes = document.querySelectorAll(".filter-technology:checked");
             const selectedTechnologies = Array.from(checkedBoxes).map(box => box.value);
-            
-            const filteredOffres = filterByTechnology(allOffres, selectedTechnologies);
-                renderCards(filteredOffres, container); 
-            
+                filtersState.technologies = selectedTechnologies;  
+                applyFilters();
+
         });
     });
 
  }
+
+function applyFilters() {
+    let result = allOffres;
+
+    result = filterByContract(result, filtersState.contracts);
+
+    result = filterByCity(result, filtersState.city);
+
+    result = filterByTechnology(result, filtersState.technologies);
+
+    renderCards(result, container);
+}
 
 }
 

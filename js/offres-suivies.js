@@ -1,4 +1,4 @@
-import { getFollowedOffers } from "./storage.js";
+import { getFollowedOffers, removeFollowedOffer } from "./storage.js";
 import { fetchOffres } from "./data.js";
 import { renderError, renderLoading, renderFollowedOffers, renderFollowedCount} from "./render.js";
 import { filterFollowedOffers } from "./filters.js";
@@ -21,8 +21,21 @@ async function initFollowedOffers() {
     const result = filterFollowedOffers(allOffres, followedOffers);
     renderFollowedOffers(result, container)
     renderFollowedCount(result.length, followedCount);
-    
-    console.log(result);    
+
+    const removeBtn = document.querySelectorAll(".remove-followed-btn");
+
+
+    removeBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const removeId= Number(btn.dataset.id);
+            console.log(removeId);
+            
+            removeFollowedOffer(removeId);
+            initFollowedOffers();
+        })
+    })
+
+    // console.log(result);    
 }
 
 initFollowedOffers();

@@ -104,3 +104,27 @@ export function filterFollowedOffers(offres, followedIds) {
 
    return offres.filter(offre => followedIds.includes(offre.id));
 }
+
+/**
+ * Compter les offres par type de contrat
+ * @param {Array} offres 
+ * @returns {object}
+ */
+export function countOffersByContract(offres) {
+   return offres.reduce((counts, offre) => {
+
+      if (offre.typeContrat === "Stage") {
+            counts.stage++;
+      }
+
+      if (offre.typeContrat === "Alternance") {
+         counts.alternance++;
+      }
+
+      return counts;
+
+    }, {
+        stage: 0,
+        alternance: 0
+    });
+}

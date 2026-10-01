@@ -251,3 +251,13 @@ export function renderFollowedCount(count, element) {
     element.textContent =
         count === 1? "1 offre suivie": `${count} offres suivies`;
 }
+
+
+export function renderResultCount(count, element, stats) {
+    const textOffres = count === 1
+        ? "1 offre trouvée"
+        : `${count} offres trouvées`;
+
+    element.textContent =
+        `${textOffres} — ${stats.stage} Stage / ${stats.alternance} Alternance`;
+}

@@ -1,7 +1,8 @@
 import { fetchOffres } from "./data.js";
 import { filterByContract , filterByCity, 
-         filterByTechnology, filterBySearch, sortByDate} from "./filters.js";
-import { renderCards, renderError, renderLoading } from "./render.js";
+         filterByTechnology, filterBySearch,
+         sortByDate, countOffersByContract} from "./filters.js";
+import { renderCards, renderError, renderLoading, renderResultCount} from "./render.js";
 
 async function init () {
  const filtersState = {
@@ -19,10 +20,12 @@ async function init () {
  const searchInput  = document.getElementById("search-input");
  const sortDate = document.getElementById("sort-date");
  const resetButton = document.getElementById("reset-filters");
-
+ const resultsCount = document.getElementById("results-count");
 
  renderLoading(container);
  const {data:allOffres, error} = await fetchOffres();
+ const initialStats = countOffersByContract(allOffres);
+
 
  if (error) {
     renderError(container,error)
@@ -31,6 +34,7 @@ async function init () {
 
  } else {
      renderCards(allOffres,container)
+     renderResultCount(allOffres.length, resultsCount, initialStats);
 
      // filter par contrats
     contractFilters.forEach(filter => {
@@ -113,6 +117,10 @@ function applyFilters() {
 
     result = sortByDate(result, filtersState.sort);
 
+    const stats = countOffersByContract(result);
+      
+    renderResultCount(result.length, resultsCount, stats);
+    
     renderCards(result, container);
 }
 

@@ -1,6 +1,6 @@
 import { fetchOffres } from "./data.js";
 import { renderError, renderDetailsCard ,renderLoading } from "./render.js";
-import { addFollowedOffer } from "./storage.js";
+import { addFollowedOffer, getFollowedOffers} from "./storage.js";
 
 async function initDetails () {
     const params = new URLSearchParams(window.location.search);
@@ -33,7 +33,16 @@ async function initDetails () {
     followButton.addEventListener("click", () => {
         addFollowedOffer(offre.id);
     
+        followButton.textContent =  "Offre suivie";
+        followButton.disabled = true;
     });
+
+    const followedIds = getFollowedOffers();
+    if (followedIds.includes(offre.id)) {
+        followButton.textContent =  "Offre suivie";
+        followButton.disabled = true; 
+    }
+    
     
 }
 

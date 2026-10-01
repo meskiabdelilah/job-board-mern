@@ -26,3 +26,18 @@ export function addFollowedOffer(id) {
 
     return followedOffers;
 }
+
+/**
+ * Supprimer une offre suivie du localStorage
+ * @param {number} id
+ * @returns {Array}
+ */
+export function removeFollowedOffer(id) {
+    const followedOffers = getFollowedOffers();
+    const updatedFollowedOffers = followedOffers.filter(followedId => followedId !== id);
+
+    const followedOffersString = JSON.stringify(updatedFollowedOffers);
+    localStorage.setItem("followedOffers", followedOffersString);
+
+    return updatedFollowedOffers;
+}

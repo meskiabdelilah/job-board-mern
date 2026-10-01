@@ -27,13 +27,24 @@
             <p>Spécialement conçu pour les apprenants en Développement Web</p>
 
             <div class="search-box">
-                <input type="text" placeholder="Rechercher une techno, un titre...">
-                <select>
+                <input type="text" id="search-input" placeholder="Rechercher une techno, un titre...">
+                <select id="city-filter">
                     <option value="">Toutes les villes</option>
                     <option value="Casablanca">Casablanca</option>
                     <option value="Rabat">Rabat</option>
+                    <option value="Marrakech">Marrakech</option>
+                    <option value="Oujda">Oujda</option>
+                    <option value="Tanger">Tanger</option>
+                    <option value="Agadir">Agadir</option>
+                    <option value="Fès">Fès</option>
+                    <option value="Nador">Nador</option>
                 </select>
-                <button class="btn btn-primary">Chercher</button>
+                <select id="sort-date">
+                    <option value="">Trier par date</option>
+                    <option value="recent">Plus récent</option>
+                    <option value="old">Plus ancien</option>
+                </select>
+                <button id="reset-filters" class="btn btn-primary">Réinitialiser</button>
             </div>
         </div>
     </section>
@@ -46,14 +57,136 @@
             <h3>Filtres</h3>
             <div class="filter-section">
                 <label><b>Type de contrat</b></label>
-                <label><input type="checkbox"> Stage</label>
-                <label><input type="checkbox"> Alternance</label>
+                <label><input type="checkbox" class="filter-contract" value="Stage"> Stage</label>
+                <label><input type="checkbox" class="filter-contract" value="Alternance"> Alternance</label>
             </div>
             <div class="filter-section">
                 <label><b>Technologies</b></label>
-                <label><input type="checkbox"> React</label>
-                <label><input type="checkbox"> Node.js</label>
-                <label><input type="checkbox"> Express</label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="JavaScript">
+                    JavaScript
+                </label>    
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="React">
+                    React
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="HTML/CSS">
+                    HTML/CSS
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Tailwind">
+                    Tailwind
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Node.js">
+                    Node.js
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Express">
+                    Express
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="MySQL">
+                    MySQL
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Bootstrap">
+                    Bootstrap
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Figma">
+                    Figma
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="MongoDB">
+                    MongoDB
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Sass">
+                    Sass
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="React Native">
+                    React Native
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Vue.js">
+                    Vue.js
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Git">
+                    Git
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="PHP">
+                    PHP
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Laravel">
+                    Laravel
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="W3C">
+                    W3C
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="REST API">
+                    REST API
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Python">
+                    Python
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="SQL">
+                    SQL
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Chart.js">
+                    Chart.js
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="TypeScript">
+                    TypeScript
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="Docker">
+                    Docker
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="JSON">
+                    JSON
+                </label>
+
+                <label>
+                    <input type="checkbox" class="filter-technology" value="localStorage">
+                    localStorage
+                </label>
             </div>
         </aside>
 
@@ -61,8 +194,6 @@
         <section class="job-container" id="offres-container"></section>
     </main>
 
-    <script type="module" src="js/data.js"></script>
-    <script type="module" src="js/render.js" ></script>
     <script type="module" src="js/app.js"></script>
 </body>
 </html>

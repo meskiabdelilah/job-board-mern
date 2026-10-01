@@ -1,11 +1,12 @@
 import { fetchOffres } from "./data.js";
-import { filterByContract , filterByCity} from "./filters.js";
+import { filterByContract , filterByCity, filterByTechnology} from "./filters.js";
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
  const container = document.getElementById("offres-container");
  const contractFilters  = document.querySelectorAll(".filter-contract");
  const cityFilters = document.getElementById("city-filter");
+ const technologieFilters = document.querySelectorAll(".filter-technology")
 
 
  renderLoading(container);
@@ -41,6 +42,19 @@ async function init () {
         const filteredOffres = filterByCity(allOffres, selectedCity);
             renderCards(filteredOffres, container);
         
+    });
+
+    // filter par technologies
+    technologieFilters.forEach(filter => {
+        filter.addEventListener("change", ()=> {
+            // Récupérer uniquement les technologie cochés
+            const checkedBoxes = document.querySelectorAll(".filter-technology:checked");
+            const selectedTechnologies = Array.from(checkedBoxes).map(box => box.value);
+            
+            const filteredOffres = filterByTechnology(allOffres, selectedTechnologies);
+                renderCards(filteredOffres, container); 
+            
+        });
     });
 
  }

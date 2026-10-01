@@ -14,7 +14,7 @@ export function filterByContract(offres, selectedContracts) {
 }
 
 /**
- * Filter les offres selon les villes 
+ * Filter les offres selon les villes coches
  * @param {Array} offres 
  * @param {string} selectedCity 
  * @returns {Array}
@@ -24,5 +24,20 @@ export function filterByCity(offres, selectedCity) {
       return offres;
    }
    
-   return offres.filter(offre => offre.ville === selectedCity)
+   return offres.filter(offre => offre.ville === selectedCity);
+}
+
+/**
+ * filter les offres selon les technologies coches
+ * @param {Array} offres 
+ * @param {Array} selectedTechnologies 
+ * @returns {Array}
+ */
+export function filterByTechnology (offres, selectedTechnologies) {
+   if (selectedTechnologies.length === 0) {
+      return offres
+   }
+
+   return offres.filter(offre => selectedTechnologies.some(tech => offre.technologies.includes(tech)));
+
 }

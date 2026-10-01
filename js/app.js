@@ -1,5 +1,6 @@
 import { fetchOffres } from "./data.js";
-import { filterByContract , filterByCity, filterByTechnology, filterBySearch, sortByDate} from "./filters.js";
+import { filterByContract , filterByCity, 
+         filterByTechnology, filterBySearch, sortByDate} from "./filters.js";
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {

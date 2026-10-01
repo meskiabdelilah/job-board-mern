@@ -22,31 +22,14 @@
     <main class="container-md page-main">
         <div class="page-header-flex">
             <h2>Mes Offres Enregistrées</h2>
-            <small> offre sauvegardée</small>
+            <small id="followed-count"> offre sauvegardée</small>
         </div>
 
-        <section class="job-container">
-            <article class="job-card">
-                <div class="card-header">
-                    <div>
-                        <span class="badge badge-stage">Stage</span>
-                        <h2>Développeur Fullstack React / Node.js</h2>
-                        <p class="company">TechCorp • Casablanca</p>
-                    </div>
-                    <button class="btn btn-danger">Supprimer</button>
-                </div>
-                <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                </div>
-                <div class="card-footer">
-                    <small>Enregistré il y a 2h</small>
-                    <a href="offre-detail.html" class="btn btn-outline">Voir détails</a>
-                </div>
-            </article>
+        <section class="job-container" id="followed-offers-container">
+
         </section>
     </main>
 
+    <script type="module" src="js/offres-suivies.js"></script>
 </body>
 </html>

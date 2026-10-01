@@ -90,3 +90,17 @@ export function sortByDate(offres, selectedSort) {
    
    return offres;
 }
+
+/**
+ * returner les offres suivies par utulisateur
+ * @param {Array} offres 
+ * @param {Array} followedIds 
+ * @returns {Array}
+ */
+export function filterFollowedOffers(offres, followedIds) {
+   if (followedIds.length === 0) {
+      return []
+   }
+
+   return offres.filter(offre => followedIds.includes(offre.id));
+}

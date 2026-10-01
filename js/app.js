@@ -1,5 +1,5 @@
 import { fetchOffres } from "./data.js";
-import { filterByContract , filterByCity, filterByTechnology, filterBySearch} from "./filters.js";
+import { filterByContract , filterByCity, filterByTechnology, filterBySearch, sortByDate} from "./filters.js";
 import { renderCards, renderError, renderLoading } from "./render.js";
 
 async function init () {
@@ -7,7 +7,8 @@ async function init () {
     contracts: [],
     city: "",
     technologies: [],
-    search: ""
+    search: "",
+    sort: ""
  };
  
  const container = document.getElementById("offres-container");
@@ -15,6 +16,8 @@ async function init () {
  const cityFilters = document.getElementById("city-filter");
  const technologieFilters = document.querySelectorAll(".filter-technology");
  const searchInput  = document.getElementById("search-input");
+ const sortDate = document.getElementById("sort-date");
+ const resetButton = document.getElementById("reset-filters");
 
 
  renderLoading(container);
@@ -68,7 +71,31 @@ async function init () {
         const searchText = searchInput.value ;
         filtersState.search = searchText;
         applyFilters();        
-    })
+    });
+
+    // filter par date
+    sortDate.addEventListener("change", ()=> {
+            const selectedSort = sortDate.value ;
+            filtersState.sort = selectedSort;
+            applyFilters();
+    });
+
+    resetButton.addEventListener("click", () => {
+       filtersState.contracts = [];
+       filtersState.city = "";
+       filtersState.technologies = [];
+       filtersState.search = "";
+       filtersState.sort = "";
+
+       contractFilters.forEach(contract => contract.checked = false);
+       cityFilters.value = "";
+       technologieFilters.forEach(tech => tech.checked = false);
+       searchInput.value = "";
+       sortDate.value = "";
+
+        
+        applyFilters()
+    });
 
  }
 
@@ -82,6 +109,8 @@ function applyFilters() {
     result = filterByTechnology(result, filtersState.technologies);
 
     result = filterBySearch(result, filtersState.search);
+
+    result = sortByDate(result, filtersState.sort);
 
     renderCards(result, container);
 }

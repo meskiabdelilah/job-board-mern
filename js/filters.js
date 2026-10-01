@@ -59,3 +59,34 @@ export function filterBySearch(offres, searchText) {
                         offre.descriptionCourte.toLowerCase().includes(query)
                         );
 }
+
+/**
+ * Trier les offres selon la date de publication.
+ * @param {Array} offres 
+ * @param {string} selectedSort 
+ * @returns {Array}
+ */
+export function sortByDate(offres, selectedSort) {
+   if (selectedSort === "") {
+      return offres;
+   }
+   const sortedOffres  = [...offres];
+
+   if (selectedSort === "recent") {
+      return sortedOffres .sort((offreA, offreB) => {
+         const dateOffreA =  new Date(offreA.datePublication);
+         const dateOffreB =  new Date(offreB.datePublication);
+         return (dateOffreB - dateOffreA)
+      });
+   }
+
+   if (selectedSort === "old") {
+      return sortedOffres.sort((offreA, offreB) => {
+         const dateOffreA = new Date(offreA.datePublication);
+         const dateOffreB = new Date(offreB.datePublication);
+         return (dateOffreA - dateOffreB);
+      });
+   }
+   
+   return offres;
+}

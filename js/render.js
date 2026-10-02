@@ -99,7 +99,7 @@ export function renderDetailsCard(offre, container) {
                 </div>
 
                 <div>
-                    <button class="btn btn-outline">
+                    <button  id="follow-offer-btn" class="btn btn-outline">
                         Sauvegarder
                     </button>
                 </div>
@@ -169,4 +169,95 @@ export function renderDetailsCard(offre, container) {
 
         </article>
     `;
+}
+
+export function renderFollowedOffers(offres, container) {
+    if (!offres || offres.length === 0) {
+        container.innerHTML = `
+            <div>
+                <p>Aucune offre suivie pour le moment.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const cardsHTML = offres.map(offre => {
+        const badgeClass = offre.typeContrat
+            .toLowerCase()
+            .includes("stage")
+            ? "badge-stage"
+            : "badge-alternance";
+
+        return `
+            <article class="job-card">
+
+                <div class="card-header">
+                    <div>
+                        <span class="badge ${badgeClass}">
+                            ${offre.typeContrat}
+                        </span>
+
+                        <h2>${offre.titre}</h2>
+
+                        <p class="company">
+                            ${offre.entreprise} • ${offre.ville}
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-danger remove-followed-btn"
+                        data-id="${offre.id}"
+                    >
+                        Supprimer
+                    </button>
+                </div>
+
+                <div class="tags">
+                    ${offre.technologies
+                        .map(tech => `
+                            <span class="tag">${tech}</span>
+                        `)
+                        .join("")}
+                </div>
+
+                <div class="card-footer">
+
+                    <small>
+                        ${offre.datePublication}
+                    </small>
+
+                    <a
+                        href="offre-detail.html?id=${offre.id}"
+                        class="btn btn-outline"
+                    >
+                        Voir détails
+                    </a>
+
+                </div>
+
+            </article>
+        `;
+    }).join("");
+
+    container.innerHTML = cardsHTML;
+}
+
+/**
+ * Afficher le nombre d'offres suivies
+ * @param {number} count
+ * @param {HTMLElement} element
+ */
+export function renderFollowedCount(count, element) {
+    element.textContent =
+        count === 1? "1 offre suivie": `${count} offres suivies`;
+}
+
+
+export function renderResultCount(count, element, stats) {
+    const textOffres = count === 1
+        ? "1 offre trouvée"
+        : `${count} offres trouvées`;
+
+    element.textContent =
+        `${textOffres} — ${stats.stage} Stage / ${stats.alternance} Alternance`;
 }
